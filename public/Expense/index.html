@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  
+</head>
+<body>
+  <h1>Expense Tracker</h1>
+  
+  <form id="expense-form">
+    <label for="amount">Expense Amount:</label>
+    <input type="number" id="amount" name="amount" required>
+    
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required>
+    
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="food">Food</option>
+      <option value="transport">Transport</option>
+      <option value="entertainment">Entertainment</option>
+      
+    </select>
+    
+    <button type="submit">Add Expense</button>
+    <button type="button" id="premium-button">Buy Premium</button>
+  </form>
+  <button type="button" id="download" style="display: none;">Download</button>
+  <br>
+  
+  <label id="premium-label"></label>
+  <br>
+  <button type="button" id="show-leaderboard">Show Leaderboard</button>
+  <br>
+  <h1>Expense List</h1>
+  <ul id="expense-list"></ul>
+  <br>
+  <div style="display: flex;">
+    <button id="prevButton" style="display: block;"></button>
+    Rows per page :-<select id="rowsPerPage" name="rowsPerPage">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="40">40</option>
+    </select>
+    <button id="nextButton" style="display: block;" ></button>
+  </div>  
+  <br>
+  <h1><label id="label-leaderboard">Leaderboard</label></h1>
+  <ul id="leaderboard-list"></ul>
+  
+  
+  <div id="premium-data" style="display: none;">
+    <center>
+      <h3>Old Files</h3>
+      <table id="old-files" border="2">
+        <tr>
+          <th>File Name</th>
+          <th>Download</th>
+        </tr>
+      </table>  
+      
+      
+    
+    
+      <h3>Monthly Expense</h3>
+    <table id="monthly-table" border="2">
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Expense</th>
+      </tr>
+    </table>
+   <h3>Yearly Expense</h3>
+  
+   <table id="yearly-table" border="2">
+    
+    <tr>
+      <th>Month</th>
+      <th>Expense</th>
+    </tr>
+  </table>
+  
+  
+  </center>
+    
+  
+  </div>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
