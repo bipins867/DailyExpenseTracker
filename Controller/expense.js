@@ -24,6 +24,7 @@ function upload2S3(data,fileName,cb){
     }
 
     return new Promise((resolve,reject)=>{
+        
         s3bucket.upload(params,(err,response)=>{
             if(err){
                 reject(err)
