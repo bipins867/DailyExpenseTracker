@@ -67,7 +67,7 @@ app.use((req, res) => {
 
 db.sync()
 .then(()=>{
-    
+    console.log("LISTENING TO THE PORT")
 app.listen(process.env.APP_PORT)
 })
 .catch(err=>console.log(err))

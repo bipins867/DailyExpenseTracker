@@ -7,7 +7,7 @@ forgetPasswordForm.onsubmit=async event=>{
     const email=forgetPasswordForm.email.value
     divForm.style.display='block';
     try{
-        const response=await axios.post('http://13.48.93.108:3000/Password/forgetPassword',{email:email})
+        const response=await axios.post('http://localhost:3000/Password/forgetPassword',{email:email})
        
         document.getElementById('pid1').style.display='block'
         

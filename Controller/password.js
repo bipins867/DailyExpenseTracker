@@ -16,7 +16,7 @@ exports.forgetPassword=async(req,res,next)=>{
         
         const email=req.user.email;
         const uids=uuid.v4();
-        const link=`http://13.48.93.108:3000/Password/resetPassword/${uids}`
+        const link=`http://localhost:3000/Password/resetPassword/${uids}`
         const subject="Reset Password"
         const body=`Your reset link is :-\n \n${link}`
         const result1=await MailService.sendMail(email,subject,body)

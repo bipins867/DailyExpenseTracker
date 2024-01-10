@@ -9,7 +9,7 @@ document.getElementById('login-form').addEventListener('submit',event=>{
         password:passwordField.value
     }
     try{
-        axios.post('http://13.48.93.108:3000/User/login',obj)
+        axios.post('http://localhost:3000/User/login',obj)
         .then(result=>{
            const status=result.status;
             

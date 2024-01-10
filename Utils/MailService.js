@@ -6,7 +6,7 @@ const client=Sib.ApiClient.instance
 const apiKey=client.authentications['api-key']
 apiKey.apiKey=process.env.API_KEY
 
-console.log(process.env.API_KEY)
+
 
 const tranEmailApi=new Sib.TransactionalEmailsApi()
 const sender={
@@ -14,12 +14,18 @@ const sender={
 }
 
 exports.sendMail=async (reciverEmail,subject,textContent)=>{
+    
     const reciver=[
         {
             email:reciverEmail
         }
     ]
-
+    await tranEmailApi.sendTransacEmail({
+      sender,
+      to: reciver,
+      subject: subject,
+      textContent: textContent,
+    });
     try{
         const result=await tranEmailApi.sendTransacEmail({
             sender,
@@ -30,7 +36,7 @@ exports.sendMail=async (reciverEmail,subject,textContent)=>{
         return true;
     }
     catch(err){
-
+        
         return false;
     }   
 }

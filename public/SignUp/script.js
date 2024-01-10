@@ -11,7 +11,7 @@ document.getElementById('signup-form').addEventListener('submit',event=>{
         password:passwordField.value
     }
     try{
-        axios.post('http://13.48.93.108:3000/User/signup',obj)
+        axios.post('http://localhost:3000/User/signup',obj)
         .then(result=>{
            const status=result.status;
 

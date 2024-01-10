@@ -24,6 +24,7 @@ function upload2S3(data,fileName,cb){
     }
 
     return new Promise((resolve,reject)=>{
+        
         s3bucket.upload(params,(err,response)=>{
             if(err){
                 reject(err)
@@ -47,7 +48,7 @@ exports.postAddExpense=async (req,res,next)=>{
         
         const transaction=await sequelize.transaction()
 
-        const obj={amount:req.body.amount,description:req.body.description,category:req.body.category,userId:req.user.id}
+        const obj={amount:req.body.amount,description:req.body.description,category:req.body.category,UserId:req.user.id}
 
         const result1=await req.user.createExpense(obj,{transaction:transaction})
         const result2=await req.user.getSumexpense({transaction:transaction})
@@ -60,6 +61,7 @@ exports.postAddExpense=async (req,res,next)=>{
     }
     catch(err)
     {   
+        console.log(err)
         await transaction.rollback();
         res.status(500).json({error:"Something went wrong"})
     }
