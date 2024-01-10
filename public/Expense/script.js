@@ -59,7 +59,7 @@ function addItem(obj){
 
         const headers={authorization:token}
         
-        axios.get(`http://51.20.55.0:3000/Expense/getDeleteExpense/${obj.id}`,{headers})
+        axios.get(`http://13.51.148.220:3000/Expense/getDeleteExpense/${obj.id}`,{headers})
         .then(result=>{
             console.log(result)
             list.removeChild(li)
@@ -90,7 +90,7 @@ const addFunction=async event=>{
     try{
             
             
-        const result=await axios.post('http://51.20.55.0:3000/Expense/postAddExpense/',obj,{headers:{Authorization:token}})
+        const result=await axios.post('http://13.51.148.220:3000/Expense/postAddExpense/',obj,{headers:{Authorization:token}})
         
         addItem(result.data)
         inputAmount.value=''
@@ -128,7 +128,7 @@ async function getExpenseByPage(page){
     
     const pageLimit=localStorage.getItem('pageLimit')
     const headers={authorization:token,pageLimit}
-    const result=await axios.get(`http://51.20.55.0:3000/Expense/getExpenseByPage/${page}`,{headers})
+    const result=await axios.get(`http://13.51.148.220:3000/Expense/getExpenseByPage/${page}`,{headers})
 
     const data=result.data.data;
     const count=result.data.count;
@@ -178,7 +178,7 @@ async function getProducts(){
     if(token==null)
     window.location.href='../Login/index.html'
     const headers={authorization:token}
-    const result=await axios.get('http://51.20.55.0:3000/Expense/getExpenses',{headers})
+    const result=await axios.get('http://13.51.148.220:3000/Expense/getExpenses',{headers})
     
     if(result.data.isPremium)
     {
@@ -214,7 +214,7 @@ buttonPremium.onclick=async event=>{
     if(token==null)
     window.location.href='../Login/index.html'
     const headers={authorization:token}
-    const result=await axios.get('http://51.20.55.0:3000/Purchase/createOrder',{headers})
+    const result=await axios.get('http://13.51.148.220:3000/Purchase/createOrder',{headers})
 
     const option={
         key:result.data.keyId,
@@ -223,7 +223,7 @@ buttonPremium.onclick=async event=>{
             
             const opt={orderId:response.razorpay_order_id}
             
-            axios.post('http://51.20.55.0:3000/Purchase/updateTransactionStatus',opt,{headers})
+            axios.post('http://13.51.148.220:3000/Purchase/updateTransactionStatus',opt,{headers})
             .then(res=>{
                 
                 if(res.status==201 || res.status==200)
@@ -253,7 +253,7 @@ buttonPremium.onclick=async event=>{
     rzp.on('payment.failed',(err)=>{
         const opt={orderId:response.razorpay_order_id}
             
-        axios.post('http://51.20.55.0:3000/Purchase/updateTransactionStatus',opt,{headers})
+        axios.post('http://13.51.148.220:3000/Purchase/updateTransactionStatus',opt,{headers})
         .then(res=>{
             alert("Transaction Failed")
         })
@@ -279,7 +279,7 @@ buttonShowLeaderboard.onclick=async event=>{
     if(token==null)
     window.location.href='../Login/index.html'
     const headers={authorization:token}
-    const result=await axios.get('http://51.20.55.0:3000/Premium/showLeaderboard',{headers})
+    const result=await axios.get('http://13.51.148.220:3000/Premium/showLeaderboard',{headers})
     
     labelLedarboard.style.display='Block'
     //listLeaderboard.remove(listLeaderboard.children)
@@ -396,7 +396,7 @@ buttonDownload.onclick=async event=>{
     const headers={authorization:token}
     try
     {
-        const result=await axios.get('http://51.20.55.0:3000/User/download',{headers})
+        const result=await axios.get('http://13.51.148.220:3000/User/download',{headers})
         console.log(result)
         const aelement=document.createElement('a')
         aelement.href=result.data.fileUrl;
